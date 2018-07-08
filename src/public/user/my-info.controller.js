@@ -2,13 +2,13 @@
     'use strict';
     angular.module('public')
         .controller('MyInfoController', MyInfoController);
-    MyInfoController.$inject = ['UserService'];
+    MyInfoController.$inject = ['MenuService'];
 
-    function MyInfoController(UserService) {
+    function MyInfoController(MenuService) {
         var myInfoCtrl = this;
-        myInfoCtrl.myInfo = UserService.getUserData();
+        myInfoCtrl.myInfo = MenuService.getUserData();
         if (myInfoCtrl.myInfo.length > 0) {
-            UserService.getUserFavMenu(myInfoCtrl.myInfo[0].favMenu)
+            MenuService.getUserDish(myInfoCtrl.myInfo[0].dish)
                 .then(function(result) {
                     myInfoCtrl.menuItem = result;
                 });

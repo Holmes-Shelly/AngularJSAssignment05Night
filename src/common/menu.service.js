@@ -22,5 +22,21 @@
                 return response.data;
             })
         };
+		var userData = new Array();
+        service.getUserDish = function(dish) {
+            return $http.get(APIBasePath + '/menu_items/' + dish + '.json')
+                .then(function success(response) {
+                    return response.data;
+                }, function error(response) {
+                    throw new Error("Failed to fetch the desired result!");
+                });
+        };
+        service.setUserData = function(userDetails) {
+            userData = [];
+            userData.push(userDetails);
+        };
+        service.getUserData = function() {
+            return userData;
+        };
     }
 })();
